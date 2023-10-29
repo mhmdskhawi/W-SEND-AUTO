@@ -2,8 +2,16 @@
 
 
 Public Class Form1
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CloseProcessByName("WhatsApp")
+        Dim text = My.Computer.FileSystem.ReadAllText(Application.StartupPath & "\PHONE.txt").Split(vbCrLf)
+
+        For Each phon In text
+
+            ListBox1.Items.Add(phon)
+
+        Next
     End Sub
     Sub sends(ByVal Phone, ByVal msg, ByVal pdf, ByVal c)
 
@@ -141,16 +149,12 @@ A1:
 
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        sendapp("01069124709", "اهلا بيكم فى برنامج", "")
 
+        For Each phon In ListBox1.Items
 
+            sendapp(phon, MESS.Text, PDFPATH.Text)
 
-
-        sendapp("01017234165", "اهلا بيكم فى برنامج", "C:\Users\PC\Documents\132.pdf")
-
-
-        sendapp("01069124709", "اهلا بيكم فى برنامج", "C:\Users\PC\Documents\132.pdf")
-
+        Next
     End Sub
 
 
@@ -172,11 +176,11 @@ A1:
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        sends("01069124709", "اهلا بيكم فى برنامج", "C:\Users\PC\Documents\132.pdf", 1)
-
-        sends("01017234165", "اهلا بيكم فى برنامج", "C:\Users\PC\Documents\132.pdf", 2)
-
-        sends("01069124709", "اهلا بيكم فى برنامج", "", 3)
+        Dim c = 1
+        For Each phon In ListBox1.Items
+            sends(phon, MESS.Text, PDFPATH.Text, c)
+            c += 1
+        Next
 
     End Sub
 End Class
