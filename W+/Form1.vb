@@ -59,7 +59,7 @@ Public Class Form1
 
 
         Thread.Sleep(1000)
-        '   FORNEXT("+{TAB}", 0)
+
         SendKeys.SendWait("{ENTER}")
         SendKeys.SendWait("{DOWN}")
         Thread.Sleep(500)
@@ -97,7 +97,7 @@ A1:
         Dim WhatsAppURL As String = "WHATSAPP://SEND?phone=%2B2" & Phone & "&text=*" & msg & "*&type=phone_number&app_absent=0"
 
 
-        ' Open the WhatsApp URL in the default web browser WHATSAPP://SEND?phone=+2" & Me.Text0
+
         System.Diagnostics.Process.Start(WhatsAppURL)
         AppActivate("WhatsApp")
 
