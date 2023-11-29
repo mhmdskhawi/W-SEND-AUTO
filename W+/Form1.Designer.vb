@@ -27,15 +27,23 @@ Partial Class Form1
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.MESS = New System.Windows.Forms.RichTextBox()
         Me.PDFPATH = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.MESS = New System.Windows.Forms.TextBox()
+        Me.StatusStrip1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(166, 221)
+        Me.Button1.Location = New System.Drawing.Point(186, 297)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(201, 23)
         Me.Button1.TabIndex = 0
@@ -44,7 +52,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(333, 250)
+        Me.Button2.Location = New System.Drawing.Point(353, 326)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 2
@@ -53,7 +61,8 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(373, 221)
+        Me.Button3.Enabled = False
+        Me.Button3.Location = New System.Drawing.Point(393, 297)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(201, 23)
         Me.Button3.TabIndex = 3
@@ -63,23 +72,14 @@ Partial Class Form1
         'ListBox1
         '
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(12, 12)
-        Me.ListBox1.MultiColumn = True
+        Me.ListBox1.Location = New System.Drawing.Point(22, 20)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(148, 264)
+        Me.ListBox1.Size = New System.Drawing.Size(148, 329)
         Me.ListBox1.TabIndex = 4
-        '
-        'MESS
-        '
-        Me.MESS.Location = New System.Drawing.Point(166, 34)
-        Me.MESS.Name = "MESS"
-        Me.MESS.Size = New System.Drawing.Size(408, 96)
-        Me.MESS.TabIndex = 5
-        Me.MESS.Text = ""
         '
         'PDFPATH
         '
-        Me.PDFPATH.Location = New System.Drawing.Point(166, 154)
+        Me.PDFPATH.Location = New System.Drawing.Point(186, 230)
         Me.PDFPATH.Name = "PDFPATH"
         Me.PDFPATH.Size = New System.Drawing.Size(408, 20)
         Me.PDFPATH.TabIndex = 6
@@ -87,7 +87,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(166, 18)
+        Me.Label1.Location = New System.Drawing.Point(186, 94)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(80, 13)
         Me.Label1.TabIndex = 7
@@ -96,28 +96,92 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(166, 138)
+        Me.Label2.Location = New System.Drawing.Point(186, 214)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(57, 13)
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "FILE PATH"
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel3})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 371)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(630, 22)
+        Me.StatusStrip1.TabIndex = 9
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(73, 17)
+        Me.ToolStripStatusLabel1.Text = "01069124709"
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(61, 17)
+        Me.ToolStripStatusLabel2.Text = "                  "
+        '
+        'ToolStripStatusLabel3
+        '
+        Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(73, 17)
+        Me.ToolStripStatusLabel3.Text = "01017234165"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Green
+        Me.Label3.Location = New System.Drawing.Point(335, 46)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(200, 23)
+        Me.Label3.TabIndex = 10
+        Me.Label3.Text = "Whatsapp Sender +"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.W_.My.Resources.Resources.whatsapp_logo_background_29
+        Me.PictureBox1.Location = New System.Drawing.Point(514, 12)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(116, 85)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 11
+        Me.PictureBox1.TabStop = False
+        '
+        'MESS
+        '
+        Me.MESS.Location = New System.Drawing.Point(189, 110)
+        Me.MESS.Multiline = True
+        Me.MESS.Name = "MESS"
+        Me.MESS.Size = New System.Drawing.Size(408, 101)
+        Me.MESS.TabIndex = 12
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(597, 282)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(630, 393)
+        Me.Controls.Add(Me.MESS)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.PDFPATH)
-        Me.Controls.Add(Me.MESS)
         Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
-        Me.Text = "W+"
+        Me.Text = "Whatsapp Sender +"
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -127,8 +191,14 @@ Partial Class Form1
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents ListBox1 As ListBox
-    Friend WithEvents MESS As RichTextBox
     Friend WithEvents PDFPATH As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel3 As ToolStripStatusLabel
+    Friend WithEvents Label3 As Label
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents MESS As TextBox
 End Class

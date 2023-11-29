@@ -214,4 +214,43 @@ A1:
             PDFPATH.Text = selectedFilePath
         End If
     End Sub
+
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        ' Create an instance of OpenFileDialog
+        Dim openFileDialog1 As New OpenFileDialog()
+
+        ' Set the initial directory (optional)
+        ' openFileDialog1.InitialDirectory = "C:\"
+
+        ' Set the title of the dialog
+        openFileDialog1.Title = "Select a File"
+
+        ' Filter files by extension
+        openFileDialog1.Filter = "Text Files|*.txt|All Files|*.*"
+
+        ' Allow selecting multiple files (optional)
+        openFileDialog1.Multiselect = False
+
+        ' Show the dialog and check if the user clicked OK
+        If openFileDialog1.ShowDialog() = DialogResult.OK Then
+            ' Get the selected file path
+            Dim selectedFilePath As String = openFileDialog1.FileName
+
+
+            CloseProcessByName("WhatsApp")
+            Dim text = My.Computer.FileSystem.ReadAllText(selectedFilePath).Split(vbCrLf)
+
+            For Each phon In text
+
+                ListBox1.Items.Add(phon)
+
+            Next
+
+
+        End If
+    End Sub
+
+    Private Sub ListBox1_DoubleClick(sender As Object, e As EventArgs) Handles ListBox1.DoubleClick
+
+    End Sub
 End Class
