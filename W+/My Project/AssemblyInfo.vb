@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("W+")>
-<Assembly: AssemblyCopyright("Copyright ©  2023")>
+<Assembly: AssemblyCopyright("Copyright © TECHLABSYSTEM 2023")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

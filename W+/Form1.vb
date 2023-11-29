@@ -150,11 +150,14 @@ A1:
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        For Each phon In ListBox1.Items
 
+        For i = 0 To ListBox1.Items.Count - 1
+            Dim phon = ListBox1.Items.Item(i)
             sendapp(phon, MESS.Text, PDFPATH.Text)
+            ListBox1.Items.Item(i) = phon & "-> DONE"
 
         Next
+
     End Sub
 
 
@@ -182,5 +185,33 @@ A1:
             c += 1
         Next
 
+    End Sub
+
+    Private Sub PDFPATH_TextChanged(sender As Object, e As EventArgs) Handles PDFPATH.TextChanged
+
+    End Sub
+
+    Private Sub PDFPATH_DoubleClick(sender As Object, e As EventArgs) Handles PDFPATH.DoubleClick
+        ' Create an instance of OpenFileDialog
+        Dim openFileDialog1 As New OpenFileDialog()
+
+        ' Set the initial directory (optional)
+        ' openFileDialog1.InitialDirectory = "C:\"
+
+        ' Set the title of the dialog
+        openFileDialog1.Title = "Select a File"
+
+        ' Filter files by extension
+        openFileDialog1.Filter = "PDF Files|*.pdf|Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*"
+
+        ' Allow selecting multiple files (optional)
+        openFileDialog1.Multiselect = False
+
+        ' Show the dialog and check if the user clicked OK
+        If openFileDialog1.ShowDialog() = DialogResult.OK Then
+            ' Get the selected file path
+            Dim selectedFilePath As String = openFileDialog1.FileName
+            PDFPATH.Text = selectedFilePath
+        End If
     End Sub
 End Class
