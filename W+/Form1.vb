@@ -138,11 +138,11 @@ A1:
         End If
 
         SendKeys.SendWait("{ENTER}")
-        Thread.Sleep(1000)
+        Thread.Sleep(1500)
         SendKeys.SendWait(pdf)
-        Thread.Sleep(3000)
+        Thread.Sleep(2000)
         SendKeys.SendWait("{ENTER}")
-        Thread.Sleep(1000)
+        Thread.Sleep(1500)
         SendKeys.SendWait("{ENTER}")
         SendKeys.SendWait("{ENTER}")
 A1:
