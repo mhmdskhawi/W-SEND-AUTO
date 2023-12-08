@@ -37,13 +37,14 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MESS = New System.Windows.Forms.TextBox()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(186, 297)
+        Me.Button1.Location = New System.Drawing.Point(191, 314)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(201, 23)
         Me.Button1.TabIndex = 0
@@ -52,7 +53,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(353, 326)
+        Me.Button2.Location = New System.Drawing.Point(358, 343)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 2
@@ -62,7 +63,7 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.Enabled = False
-        Me.Button3.Location = New System.Drawing.Point(393, 297)
+        Me.Button3.Location = New System.Drawing.Point(398, 314)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(201, 23)
         Me.Button3.TabIndex = 3
@@ -79,7 +80,7 @@ Partial Class Form1
         '
         'PDFPATH
         '
-        Me.PDFPATH.Location = New System.Drawing.Point(186, 230)
+        Me.PDFPATH.Location = New System.Drawing.Point(191, 247)
         Me.PDFPATH.Name = "PDFPATH"
         Me.PDFPATH.Size = New System.Drawing.Size(408, 20)
         Me.PDFPATH.TabIndex = 6
@@ -87,7 +88,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(186, 94)
+        Me.Label1.Location = New System.Drawing.Point(191, 111)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(80, 13)
         Me.Label1.TabIndex = 7
@@ -96,7 +97,7 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(186, 214)
+        Me.Label2.Location = New System.Drawing.Point(191, 231)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(57, 13)
         Me.Label2.TabIndex = 8
@@ -152,11 +153,20 @@ Partial Class Form1
         '
         'MESS
         '
-        Me.MESS.Location = New System.Drawing.Point(189, 110)
+        Me.MESS.Location = New System.Drawing.Point(194, 127)
         Me.MESS.Multiline = True
         Me.MESS.Name = "MESS"
         Me.MESS.Size = New System.Drawing.Size(408, 101)
         Me.MESS.TabIndex = 12
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(125, 341)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(45, 25)
+        Me.Button4.TabIndex = 13
+        Me.Button4.Text = "..."
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -175,6 +185,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Button4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
@@ -201,4 +212,5 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents MESS As TextBox
+    Friend WithEvents Button4 As Button
 End Class

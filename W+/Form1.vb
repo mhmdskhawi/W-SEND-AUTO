@@ -2,7 +2,7 @@
 
 
 Public Class Form1
-
+    Dim filter = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CloseProcessByName("WhatsApp")
         Dim text = My.Computer.FileSystem.ReadAllText(Application.StartupPath & "\PHONE.txt").Split(vbCrLf)
@@ -109,7 +109,10 @@ A1:
         AppActivate("WhatsApp")
         Thread.Sleep(500)
 
-        FORNEXT("+{TAB}", 4)
+        FORNEXT("+{TAB}", 4) ' 4
+        SendKeys.SendWait(msg)
+        SendKeys.SendWait("{ENTER}")
+
 
         Thread.Sleep(500)
         SendKeys.SendWait("{ENTER}")
@@ -122,11 +125,22 @@ A1:
         Thread.Sleep(500)
         SendKeys.SendWait("{ENTER}")
         Thread.Sleep(500)
-        SendKeys.SendWait("{DOWN}")
-        Thread.Sleep(500)
+
+
+        If filter = "jpg" Or filter = "jpeg" Or filter = "png" Or filter = "gif" Or filter = "bmp" Then ' filter = jpg jpeg png gif bmp
+
+        Else
+            SendKeys.SendWait("{DOWN}")
+            Thread.Sleep(500)
+
+            SendKeys.SendWait("{DOWN}")
+            Thread.Sleep(500)
+        End If
+
         SendKeys.SendWait("{ENTER}")
-        Thread.Sleep(500)
+        Thread.Sleep(1000)
         SendKeys.SendWait(pdf)
+        Thread.Sleep(3000)
         SendKeys.SendWait("{ENTER}")
         Thread.Sleep(1000)
         SendKeys.SendWait("{ENTER}")
@@ -201,7 +215,7 @@ A1:
         ' Set the title of the dialog
         openFileDialog1.Title = "Select a File"
 
-        ' Filter files by extension
+        ' Filter files by extension   
         openFileDialog1.Filter = "PDF Files|*.pdf|Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp|All Files|*.*"
 
         ' Allow selecting multiple files (optional)
@@ -212,10 +226,22 @@ A1:
             ' Get the selected file path
             Dim selectedFilePath As String = openFileDialog1.FileName
             PDFPATH.Text = selectedFilePath
+            filter = (selectedFilePath.Substring(selectedFilePath.Length - 3, 3))
         End If
     End Sub
 
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub ListBox1_DoubleClick(sender As Object, e As EventArgs) Handles ListBox1.DoubleClick
+        Dim sReturn As String
+        sReturn = InputBox("Phone Number ( 01069124709 ) : ")
+        ListBox1.Items.Add(sReturn)
+
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         ' Create an instance of OpenFileDialog
         Dim openFileDialog1 As New OpenFileDialog()
 
@@ -248,9 +274,5 @@ A1:
 
 
         End If
-    End Sub
-
-    Private Sub ListBox1_DoubleClick(sender As Object, e As EventArgs) Handles ListBox1.DoubleClick
-
     End Sub
 End Class
