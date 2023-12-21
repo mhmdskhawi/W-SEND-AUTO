@@ -38,13 +38,16 @@ Partial Class Form1
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MESS = New System.Windows.Forms.TextBox()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.cc = New System.Windows.Forms.Label()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(191, 314)
+        Me.Button1.Location = New System.Drawing.Point(191, 273)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(201, 23)
         Me.Button1.TabIndex = 0
@@ -63,7 +66,7 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.Enabled = False
-        Me.Button3.Location = New System.Drawing.Point(398, 314)
+        Me.Button3.Location = New System.Drawing.Point(398, 273)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(201, 23)
         Me.Button3.TabIndex = 3
@@ -168,12 +171,42 @@ Partial Class Form1
         Me.Button4.Text = "..."
         Me.Button4.UseVisualStyleBackColor = True
         '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(299, 302)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(201, 23)
+        Me.Button5.TabIndex = 14
+        Me.Button5.Text = "API"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'cc
+        '
+        Me.cc.AutoSize = True
+        Me.cc.Location = New System.Drawing.Point(19, 348)
+        Me.cc.Name = "cc"
+        Me.cc.Size = New System.Drawing.Size(13, 13)
+        Me.cc.TabIndex = 15
+        Me.cc.Text = "0"
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(173, 20)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(134, 23)
+        Me.Button6.TabIndex = 16
+        Me.Button6.Text = "<<-Split Num {400}"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(630, 393)
+        Me.Controls.Add(Me.Button6)
+        Me.Controls.Add(Me.cc)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.MESS)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.PictureBox1)
@@ -213,4 +246,7 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents MESS As TextBox
     Friend WithEvents Button4 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents cc As Label
+    Friend WithEvents Button6 As Button
 End Class

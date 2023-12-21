@@ -1,17 +1,27 @@
 ﻿Imports System.Threading ' Add this import for Thread.Sleep
 
+Imports System.Net.Http
+Imports System.Text
+Imports System.IO
 
 Public Class Form1
     Dim filter = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CloseProcessByName("WhatsApp")
-        Dim text = My.Computer.FileSystem.ReadAllText(Application.StartupPath & "\PHONE.txt").Split(vbCrLf)
+        Try
+            Dim text = My.Computer.FileSystem.ReadAllText(Application.StartupPath & "\PHONE.txt").Split(vbCrLf)
 
-        For Each phon In text
+            For Each phon In text
 
-            ListBox1.Items.Add(phon)
+                ListBox1.Items.Add(phon)
 
-        Next
+            Next
+            cc.Text = ListBox1.Items.Count
+
+        Catch ex As Exception
+
+        End Try
+
     End Sub
     Sub sends(ByVal Phone, ByVal msg, ByVal pdf, ByVal c)
 
@@ -238,6 +248,7 @@ A1:
         Dim sReturn As String
         sReturn = InputBox("Phone Number ( 01069124709 ) : ")
         ListBox1.Items.Add(sReturn)
+        cc.Text = ListBox1.Items.Count
 
     End Sub
 
@@ -267,12 +278,87 @@ A1:
             Dim text = My.Computer.FileSystem.ReadAllText(selectedFilePath).Split(vbCrLf)
 
             For Each phon In text
-
                 ListBox1.Items.Add(phon)
-
             Next
-
+            cc.Text = ListBox1.Items.Count
 
         End If
+    End Sub
+    Function send_api(ByVal num, ByVal mes)
+
+        Dim url As String = "http://127.0.0.1/api/create-message"
+
+        Dim payload As String = "appkey=e9aa67a4-bb3c-4c89-88f1-a03af52117fb" &
+                                "&authkey=4gXAPSaPdXMohzlRHdcAAJHdEy7y4MRUH5KyQznJjOXzJ3FZwl" &
+                                "&to=+{0}" &
+                                "&message={1}"
+        Dim req As String = String.Format(payload, num, mes)
+        Dim content As New StringContent(req, Encoding.UTF8, "application/x-www-form-urlencoded")
+
+        Using client As New HttpClient()
+            Dim response As HttpResponseMessage = client.PostAsync(url, content).Result
+
+            If response.IsSuccessStatusCode Then
+                Dim responseContent As String = response.Content.ReadAsStringAsync().Result
+                Return 1
+                '   MsgBox(responseContent)
+            Else
+                Return 0
+
+                MsgBox($"Error: {response.StatusCode} - {response.ReasonPhrase}")
+            End If
+        End Using
+
+    End Function
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+
+        For i = 0 To ListBox1.Items.Count - 1
+            Dim phon = ListBox1.Items.Item(i)
+            If send_api(phon, MESS.Text.Replace("{0Num}", "")) = 1 Then
+                ListBox1.Items.Item(i) = phon & "-> DONE"
+                Thread.Sleep("2000")
+            Else
+                ListBox1.Items.Item(i) = phon & "-> Error"
+            End If
+
+
+        Next
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Dim numbers As New List(Of String) ' Assuming you have a list of numbers
+
+        For i = 0 To ListBox1.Items.Count - 1
+            Dim phon = ListBox1.Items.Item(i)
+
+            numbers.Add(phon)
+        Next
+
+
+        ' Set the number of numbers per file
+        Dim numbersPerFile As Integer = 400
+
+        ' Calculate the number of files needed
+        Dim totalNumbers As Integer = numbers.Count
+        Dim numberOfFiles As Integer = CInt(Math.Ceiling(totalNumbers / numbersPerFile))
+
+        ' Create and write to files
+        For i As Integer = 0 To numberOfFiles - 1
+            ' Calculate the range for the current file
+            Dim startIdx As Integer = i * numbersPerFile
+            Dim endIdx As Integer = Math.Min((i + 1) * numbersPerFile, totalNumbers)
+
+            ' Get the numbers for the current file
+            Dim numbersForFile As List(Of String) = numbers.GetRange(startIdx, endIdx - startIdx)
+
+            ' Create and write to the file
+            Dim fileName As String = $"output_file_{i + 1}.txt"
+            File.WriteAllLines(fileName, numbersForFile)
+        Next
+
+        Console.WriteLine("Files created successfully.")
+
+
     End Sub
 End Class
