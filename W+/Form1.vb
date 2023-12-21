@@ -5,6 +5,7 @@ Imports System.Text
 Imports System.IO
 
 Public Class Form1
+    Dim random As New Random()
     Dim filter = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         CloseProcessByName("WhatsApp")
@@ -312,10 +313,19 @@ A1:
     End Function
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        ' Specify the length of the random code
+
+
+
+
+        Dim randomNumber As Integer = Random.Next(3241, 943432135)
 
         For i = 0 To ListBox1.Items.Count - 1
+            Dim codeLength As Integer = random.Next(1, 20)
+            Dim randomCode As String = GenerateRandomCode(codeLength)
+
             Dim phon = ListBox1.Items.Item(i)
-            If send_api(phon, MESS.Text.Replace("{0Num}", "")) = 1 Then
+            If send_api(phon, randomCode & vbCrLf & MESS.Text.Replace("{0Num}", vbCrLf & " Code: " & randomNumber & " -  @" & phon)) = 1 Then
                 ListBox1.Items.Item(i) = phon & "-> DONE"
                 Thread.Sleep("2000")
             Else
@@ -359,6 +369,29 @@ A1:
 
         Console.WriteLine("Files created successfully.")
 
+
+    End Sub
+    Function GenerateRandomCode(length As Integer) As String
+        ' Define the characters to use for the random code
+        Dim characters As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+        ' Create a StringBuilder to build the random code
+        Dim randomCodeBuilder As New StringBuilder()
+
+        ' Create a Random object
+        Dim random As New Random()
+
+        ' Generate the random code
+        For i As Integer = 1 To length
+            Dim randomIndex As Integer = random.Next(0, characters.Length)
+            randomCodeBuilder.Append(characters(randomIndex))
+        Next
+
+        ' Return the random code as a string
+        Return randomCodeBuilder.ToString()
+    End Function
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
 
     End Sub
 End Class

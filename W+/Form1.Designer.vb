@@ -41,6 +41,7 @@ Partial Class Form1
         Me.Button5 = New System.Windows.Forms.Button()
         Me.cc = New System.Windows.Forms.Label()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -198,12 +199,22 @@ Partial Class Form1
         Me.Button6.Text = "<<-Split Num {400}"
         Me.Button6.UseVisualStyleBackColor = True
         '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(348, 12)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(75, 23)
+        Me.Button7.TabIndex = 17
+        Me.Button7.Text = "Button7"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(630, 393)
+        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.cc)
         Me.Controls.Add(Me.Button5)
@@ -249,4 +260,5 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents cc As Label
     Friend WithEvents Button6 As Button
+    Friend WithEvents Button7 As Button
 End Class
