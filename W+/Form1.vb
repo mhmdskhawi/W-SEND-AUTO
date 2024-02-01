@@ -8,6 +8,7 @@ Public Class Form1
     Dim random As New Random()
     Dim filter = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Size = New Size(649, 432)
         CloseProcessByName("WhatsApp")
         Try
             Dim text = My.Computer.FileSystem.ReadAllText(Application.StartupPath & "\PHONE.txt").Split(vbCrLf)
@@ -22,7 +23,7 @@ Public Class Form1
         Catch ex As Exception
 
         End Try
-
+        gettext()
     End Sub
     Sub sends(ByVal Phone, ByVal msg, ByVal pdf, ByVal c)
 
@@ -287,10 +288,10 @@ A1:
     End Sub
     Function send_api(ByVal num, ByVal mes)
 
-        Dim url As String = "http://127.0.0.1/api/create-message"
+        Dim url As String = "https://wsend.my-sys.online/api/create-message"
 
-        Dim payload As String = "appkey=e9aa67a4-bb3c-4c89-88f1-a03af52117fb" &
-                                "&authkey=4gXAPSaPdXMohzlRHdcAAJHdEy7y4MRUH5KyQznJjOXzJ3FZwl" &
+        Dim payload As String = "appkey=fd5287f1-8a8c-424b-bc7c-e85030af07a2" &
+                                "&authkey=V7aBd7njDj9IcmnEWqQ0k5DGNOCozi3gT9nhjVFGHyeIl4lckg" &
                                 "&to=+{0}" &
                                 "&message={1}"
         Dim req As String = String.Format(payload, num, mes)
@@ -311,23 +312,77 @@ A1:
         End Using
 
     End Function
+    Function send_api_file(ByVal num, ByVal mes)
 
+        Dim url As String = "https://wsend.my-sys.online/api/create-message"
+
+        Dim payload As String = "appkey=fd5287f1-8a8c-424b-bc7c-e85030af07a2" &
+                                "&authkey=V7aBd7njDj9IcmnEWqQ0k5DGNOCozi3gT9nhjVFGHyeIl4lckg" &
+                                "&to=+{0}" &
+                                "&message={1}" &
+                                "&file=https://www.tbark-lab.com/admin/medical_reports/print_report_with_header_action/286"
+
+        Dim req As String = String.Format(payload, num, mes)
+        Dim content As New StringContent(req, Encoding.UTF8, "application/x-www-form-urlencoded")
+
+        Using client As New HttpClient()
+            Dim response As HttpResponseMessage = client.PostAsync(url, content).Result
+
+            If response.IsSuccessStatusCode Then
+                Dim responseContent As String = response.Content.ReadAsStringAsync().Result
+
+                MsgBox(responseContent)
+            Else
+
+
+                MsgBox($"Error: {response.StatusCode} - {response.ReasonPhrase}")
+            End If
+        End Using
+
+    End Function
+    Function GenerateRandomText() As String
+        ' Define an array of texts
+        Dim texts As String() = {
+          TextBox1.Text,
+          TextBox2.Text,
+          TextBox3.Text,
+          TextBox4.Text,
+          TextBox5.Text
+        }
+
+        ' Get a random index
+        Dim random As New Random()
+        Dim index As Integer = random.Next(0, texts.Length)
+
+        ' Return the randomly selected text
+        Return texts(index)
+    End Function
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         ' Specify the length of the random code
 
+        Dim messtext
+        'randomText
 
 
 
         Dim randomNumber As Integer = Random.Next(3241, 943432135)
 
         For i = 0 To ListBox1.Items.Count - 1
+            Dim randomText As String = GenerateRandomText()
+            If RadioButton1.Checked Then
+
+            Else
+                messtext = randomText
+                MESS.Text = messtext
+            End If
             Dim codeLength As Integer = random.Next(1, 20)
             Dim randomCode As String = GenerateRandomCode(codeLength)
 
-            Dim phon = ListBox1.Items.Item(i)
+            Dim phon = "+" & ListBox1.Items.Item(i)
+
             If send_api(phon, randomCode & vbCrLf & MESS.Text.Replace("{0Num}", vbCrLf & " Code: " & randomNumber & " -  @" & phon)) = 1 Then
                 ListBox1.Items.Item(i) = phon & "-> DONE"
-                Thread.Sleep("2000")
+                Thread.Sleep("4500")
             Else
                 ListBox1.Items.Item(i) = phon & "-> Error"
             End If
@@ -392,6 +447,54 @@ A1:
     End Function
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        send_api_file("201069124709", "123")
+    End Sub
 
+    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
+        Me.Size = New Size(1087, 432)
+    End Sub
+
+    Sub gettext()
+        MESS.Text = My.Settings.Item("mtext")
+        TextBox1.Text = My.Settings.Item("text1")
+        TextBox2.Text = My.Settings.Item("text2")
+        TextBox3.Text = My.Settings.Item("text3")
+        TextBox4.Text = My.Settings.Item("text4")
+        TextBox5.Text = My.Settings.Item("text5")
+
+    End Sub
+
+    Private Sub MESS_TextChanged(sender As Object, e As EventArgs) Handles MESS.TextChanged
+        My.Settings.Item("mtext") = MESS.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+        My.Settings.Item("text1") = TextBox1.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+        My.Settings.Item("text2") = TextBox2.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub TextBox3_TextChanged(sender As Object, e As EventArgs) Handles TextBox3.TextChanged
+        My.Settings.Item("text3") = TextBox3.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
+        My.Settings.Item("text4") = TextBox4.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
+        My.Settings.Item("text5") = TextBox5.Text
+        My.Settings.Save()
+    End Sub
+
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
+        Me.Size = New Size(649, 432)
     End Sub
 End Class
