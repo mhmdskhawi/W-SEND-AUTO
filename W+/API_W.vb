@@ -2,11 +2,12 @@
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
+Imports System.Windows.Forms
 
 Public Class API_W
     Dim authke As String = "mXHQwqbHQBKr9owh3KKy5k1iUDtt5XNgVxt8xt2Kmd3dYJMLj0"
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        MsgBox(API.creatdevice(authke, "dgsdfg"))
+        Call API.creatdevice(authke, "dgsdfg")
 
         reconncet()
     End Sub
@@ -23,11 +24,12 @@ Public Class API_W
         getdev()
     End Sub
     Sub getdev()
-        Dim x
-        x = API.get_devices(authke)
-        Dim objects As List(Of JObject) = JsonConvert.DeserializeObject(Of List(Of JObject))(x)
+
+        Dim objects As List(Of JObject) = JsonConvert.DeserializeObject(Of List(Of JObject))(API.get_devices(authke))
 
         For Each obj As JObject In objects
+
+
             If obj("status").ToString <> "1" Then
 
 
@@ -38,6 +40,9 @@ Public Class API_W
                 TabControl1.TabPages.Add(TabControl1.TabCount + 1, "Connected" & "|" & obj("id").ToString())
                 add_pic_con(obj("uuid").ToString())
             End If
+
+            TabControl1.TabPages.Item(TabControl1.TabCount - 1).Tag = obj("uuid").ToString()
+            Call API.chk_device(obj("uuid").ToString)
         Next
 
 
@@ -88,5 +93,84 @@ A1:
     End Sub
     Private Sub API_W_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         getdev()
+        Button4.Enabled = False
+        GroupBox3.Enabled = False
+    End Sub
+
+    Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
+        getkey()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+
+        Dim result As DialogResult = MessageBox.Show("Do you want to Delete Device ?", "Confirmation", MessageBoxButtons.YesNo)
+
+        ' Check the user's choice
+        If result = DialogResult.Yes Then
+            Call API.destroy_device(TabControl1.TabPages.Item(TabControl1.SelectedIndex).Tag)
+            reconncet()
+        Else
+
+        End If
+
+
+
+    End Sub
+
+
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        MsgBox(API.app_creat(authke, "Applecation", TabControl1.TabPages.Item(TabControl1.SelectedIndex).Text.Replace("Connected|", "")))
+        getkey()
+
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        On Error Resume Next
+
+        getkey()
+
+        Clipboard.SetText(appkeyy.Text)
+    End Sub
+    Sub getkey()
+        On Error Resume Next
+        GroupBox3.Enabled = False
+
+        If TabControl1.TabPages.Item(TabControl1.SelectedIndex).Text.Contains("Connected") Then
+            Button4.Enabled = True
+            Button4.Text = "Create"
+        Else
+            Button4.Enabled = False
+            Button4.Text = "Scan Qr .. "
+        End If
+
+        Dim objects As List(Of JObject) = JsonConvert.DeserializeObject(Of List(Of JObject))(API.get_apps(authke))
+        appkeyy.Text = "."
+        For Each obj As JObject In objects
+            If TabControl1.TabPages.Item(TabControl1.SelectedIndex).Text.Replace("Connected|", "") = obj("device_id").ToString() Then
+                appkeyy.Text = obj("key").ToString()
+                GroupBox3.Enabled = True
+
+                Button4.Enabled = False
+                Button4.Text = "You Have One"
+
+
+
+
+            End If
+
+
+        Next
+
+
+    End Sub
+
+
+    Private Sub appkeyy_DoubleClick(sender As Object, e As EventArgs) Handles appkeyy.DoubleClick
+        TextBox1.Text = appkeyy.Text
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
     End Sub
 End Class

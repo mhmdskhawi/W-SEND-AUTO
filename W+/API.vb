@@ -27,7 +27,35 @@ Module API
         End Using
 
     End Function
+    Function chk_device(uuid As String)
+        Dim apiUrl As String = $"https://wplus.my-sys.online/api/checkSession/{uuid}"
+        Dim httpClient As New HttpClient()
 
+
+        Dim responseTask = httpClient.GetAsync(apiUrl)
+
+
+        Dim responseContent = responseTask.Result.Content.ReadAsStringAsync().Result
+
+        ' Return the response content
+        Return responseContent
+
+    End Function
+    Function destroy_device(uuid As String)
+        Dim apiUrl As String = $"https://wplus.my-sys.online/api/device_destroy/{uuid}"
+
+        Dim httpClient As New HttpClient()
+
+
+        Dim responseTask = httpClient.GetAsync(apiUrl)
+
+
+        Dim responseContent = responseTask.Result.Content.ReadAsStringAsync().Result
+
+        ' Return the response content
+        Return responseContent
+
+    End Function
     Function get_devices(authKey As String) As String
 
         Dim apiUrl As String = "https://wplus.my-sys.online/api/gdid/?authkey=" & authKey
@@ -106,7 +134,32 @@ Module API
     End Function
 
 
+    Function send_api(ByVal num, ByVal mes, ByVal auth, ByVal app)
 
+        Dim url As String = "https://wsend.my-sys.online/api/create-message"
+
+        Dim payload As String = "appkey=fd5287f1-8a8c-424b-bc7c-e85030af07a2" &
+                                "&authkey=V7aBd7njDj9IcmnEWqQ0k5DGNOCozi3gT9nhjVFGHyeIl4lckg" &
+                                "&to=+{0}" &
+                                "&message={1}"
+        Dim req As String = String.Format(payload, num, mes)
+        Dim content As New StringContent(req, Encoding.UTF8, "application/x-www-form-urlencoded")
+
+        Using client As New HttpClient()
+            Dim response As HttpResponseMessage = client.PostAsync(url, content).Result
+
+            If response.IsSuccessStatusCode Then
+                Dim responseContent As String = response.Content.ReadAsStringAsync().Result
+                Return 1
+                '   MsgBox(responseContent)
+            Else
+                Return 0
+
+                MsgBox($"Error: {response.StatusCode} - {response.ReasonPhrase}")
+            End If
+        End Using
+
+    End Function
 
 
 
