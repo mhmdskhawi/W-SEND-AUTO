@@ -133,13 +133,29 @@ Module API
         Return responseContent
     End Function
 
+    Function loginchek(authKey As String) As String
+        ' API Endpoint URL
+        Dim apiUrl As String = "https://wplus.my-sys.online/api/checkau/" & authKey
+
+        ' HttpClient to make the HTTP request
+        Dim httpClient As New HttpClient()
+
+        ' Send GET request asynchronously
+        Dim responseTask = httpClient.GetAsync(apiUrl)
+
+        ' Await the response and read the content
+        Dim responseContent = responseTask.Result.Content.ReadAsStringAsync().Result
+
+        ' Return the response content
+        Return responseContent
+    End Function
 
     Function send_api(ByVal num, ByVal mes, ByVal auth, ByVal app)
 
-        Dim url As String = "https://wsend.my-sys.online/api/create-message"
+        Dim url As String = "https://wplus.my-sys.online/api/create-message"
 
-        Dim payload As String = "appkey=fd5287f1-8a8c-424b-bc7c-e85030af07a2" &
-                                "&authkey=V7aBd7njDj9IcmnEWqQ0k5DGNOCozi3gT9nhjVFGHyeIl4lckg" &
+        Dim payload As String = $"appkey={app}" &
+                                $"&authkey={auth}" &
                                 "&to=+{0}" &
                                 "&message={1}"
         Dim req As String = String.Format(payload, num, mes)

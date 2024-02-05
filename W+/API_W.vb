@@ -5,7 +5,7 @@ Imports Newtonsoft.Json.Linq
 Imports System.Windows.Forms
 
 Public Class API_W
-    Dim authke As String = "mXHQwqbHQBKr9owh3KKy5k1iUDtt5XNgVxt8xt2Kmd3dYJMLj0"
+    Dim authke As String = Login.TextBox1.Text
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Call API.creatdevice(authke, "dgsdfg")
 
@@ -171,6 +171,6 @@ A1:
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-
+        send_api(TextBox2.Text, "Test", authke, appkeyy.Text)
     End Sub
 End Class

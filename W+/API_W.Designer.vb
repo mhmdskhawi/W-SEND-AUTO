@@ -22,6 +22,7 @@ Partial Class API_W
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(API_W))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
@@ -37,9 +38,12 @@ Partial Class API_W
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -53,7 +57,7 @@ Partial Class API_W
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(12, 12)
+        Me.Button2.Location = New System.Drawing.Point(12, 50)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(290, 28)
         Me.Button2.TabIndex = 1
@@ -62,10 +66,10 @@ Partial Class API_W
         '
         'TabControl1
         '
-        Me.TabControl1.Location = New System.Drawing.Point(12, 44)
+        Me.TabControl1.Location = New System.Drawing.Point(12, 82)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(380, 380)
+        Me.TabControl1.Size = New System.Drawing.Size(380, 407)
         Me.TabControl1.TabIndex = 2
         Me.TabControl1.Tag = ""
         '
@@ -74,7 +78,7 @@ Partial Class API_W
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.TextBox1)
         Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Location = New System.Drawing.Point(398, 44)
+        Me.GroupBox1.Location = New System.Drawing.Point(398, 126)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(367, 101)
         Me.GroupBox1.TabIndex = 3
@@ -104,9 +108,9 @@ Partial Class API_W
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Location = New System.Drawing.Point(308, 12)
+        Me.Button3.Location = New System.Drawing.Point(308, 50)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(84, 28)
+        Me.Button3.Size = New System.Drawing.Size(69, 28)
         Me.Button3.TabIndex = 4
         Me.Button3.Text = "Delete"
         Me.Button3.UseVisualStyleBackColor = False
@@ -116,7 +120,7 @@ Partial Class API_W
         Me.GroupBox2.Controls.Add(Me.Button5)
         Me.GroupBox2.Controls.Add(Me.appkeyy)
         Me.GroupBox2.Controls.Add(Me.Button4)
-        Me.GroupBox2.Location = New System.Drawing.Point(398, 151)
+        Me.GroupBox2.Location = New System.Drawing.Point(398, 233)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(367, 140)
         Me.GroupBox2.TabIndex = 5
@@ -155,7 +159,7 @@ Partial Class API_W
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.Button6)
         Me.GroupBox3.Controls.Add(Me.TextBox2)
-        Me.GroupBox3.Location = New System.Drawing.Point(398, 297)
+        Me.GroupBox3.Location = New System.Drawing.Point(398, 379)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(367, 110)
         Me.GroupBox3.TabIndex = 6
@@ -189,17 +193,47 @@ Partial Class API_W
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Phone ex : +201012345678"
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Green
+        Me.Label3.Location = New System.Drawing.Point(446, 55)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(200, 23)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Whatsapp Sender +"
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.W_.My.Resources.Resources.whatsapp_logo_background_29
+        Me.PictureBox1.Location = New System.Drawing.Point(625, 21)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(116, 85)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 13
+        Me.PictureBox1.TabStop = False
+        '
         'API_W
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(777, 435)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(777, 512)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.Button2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(793, 551)
+        Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(793, 551)
         Me.Name = "API_W"
         Me.Text = "API_W"
         Me.GroupBox1.ResumeLayout(False)
@@ -208,7 +242,9 @@ Partial Class API_W
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -227,4 +263,6 @@ Partial Class API_W
     Friend WithEvents Label2 As Label
     Friend WithEvents Button6 As Button
     Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
