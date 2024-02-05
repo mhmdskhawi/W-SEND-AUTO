@@ -173,4 +173,8 @@ A1:
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         send_api(TextBox2.Text, "Test", authke, appkeyy.Text)
     End Sub
+
+    Private Sub API_W_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        Application.Exit()
+    End Sub
 End Class

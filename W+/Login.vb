@@ -5,7 +5,7 @@ Public Class Login
         Dim xdata = loginchek(TextBox1.Text)
 
         If xdata = "" Or TextBox1.Text = "" Then
-
+            MsgBox("NOT ALLOWED")
         Else
             Dim jsonResponse As JObject = JObject.Parse(xdata)
             If jsonResponse("status").ToString() = "1" Then
