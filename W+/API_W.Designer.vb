@@ -235,7 +235,9 @@ Partial Class API_W
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(793, 551)
         Me.Name = "API_W"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "API_W"
+        Me.TopMost = True
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
