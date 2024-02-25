@@ -1,4 +1,5 @@
-﻿Imports System.Net.Http
+﻿Imports System.IO
+Imports System.Net.Http
 Imports System.Text
 Imports Newtonsoft.Json.Linq
 
@@ -148,6 +149,7 @@ Module API
 
         ' Return the response content
         Return responseContent
+
     End Function
 
     Function send_api(ByVal num, ByVal mes, ByVal auth, ByVal app)
@@ -166,7 +168,8 @@ Module API
 
             If response.IsSuccessStatusCode Then
                 Dim responseContent As String = response.Content.ReadAsStringAsync().Result
-                Return 1
+                MsgBox(responseContent)
+
                 '   MsgBox(responseContent)
             Else
                 Return 0
@@ -177,6 +180,42 @@ Module API
 
     End Function
 
+    Function send_apifile(ByVal num, ByVal mes, ByVal auth, ByVal app, ByVal filePath)
 
+        Dim url As String = "https://wplus.my-sys.online/api/create-message"
 
+        ' Create a new instance of MultipartFormDataContent
+        Dim formData As New MultipartFormDataContent()
+
+        ' Add text parameters
+        formData.Add(New StringContent(app), "appkey")
+        formData.Add(New StringContent(auth), "authkey")
+        formData.Add(New StringContent(num), "to")
+        formData.Add(New StringContent(mes), "message")
+
+        ' Add file parameter
+        Dim fileBytes As Byte() = File.ReadAllBytes(filePath)
+        Dim fileContent As New ByteArrayContent(fileBytes)
+        formData.Add(fileContent, "data", Path.GetFileName(filePath))
+
+        ' Send the request
+        SendRequest(url, formData)
+    End Function
+
+    Async Sub SendRequest(ByVal url As String, ByVal content As MultipartFormDataContent)
+        Using client As New HttpClient()
+            Try
+                Dim response As HttpResponseMessage = Await client.PostAsync(url, content)
+
+                If response.IsSuccessStatusCode Then
+                    Dim responseContent As String = Await response.Content.ReadAsStringAsync()
+                    MsgBox(responseContent)
+                Else
+                    MsgBox($"Error: {response.StatusCode} - {response.ReasonPhrase}")
+                End If
+            Catch ex As Exception
+                MsgBox($"Exception: {ex.Message}")
+            End Try
+        End Using
+    End Sub
 End Module

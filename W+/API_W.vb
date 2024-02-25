@@ -171,7 +171,26 @@ A1:
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        send_api(TextBox2.Text, "Test", authke, appkeyy.Text)
+        ' Set the file dialog properties
+        OpenFileDialog1.InitialDirectory = "C:\" ' Set initial directory if needed
+        OpenFileDialog1.Filter = "Image Files (*.jpg, *.jpeg, *.png, *.webp)|*.jpg;*.jpeg;*.png;*.webp|PDF Files (*.pdf)|*.pdf|Document Files (*.docx, *.xlsx, *.csv)|*.docx;*.xlsx;*.csv" ' Filter to specific file types
+        OpenFileDialog1.FilterIndex = 1 ' Index of the filter to be selected by default
+
+        ' Show the file dialog and check if the user selected a file
+        If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
+            Dim selectedFilePath As String = OpenFileDialog1.FileName
+
+            ' Here, you can use the selectedFilePath variable as needed
+            send_apifile(TextBox2.Text, "Test API with file", authke, appkeyy.Text, selectedFilePath)
+
+        Else
+            MsgBox("Will Send Text  ..   Test API without file ")
+            send_api(TextBox2.Text, "Test API without file", authke, appkeyy.Text)
+
+        End If
+
+
+
     End Sub
 
     Private Sub API_W_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing

@@ -35,11 +35,12 @@ Partial Class API_W
         Me.appkeyy = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Button6 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -166,14 +167,14 @@ Partial Class API_W
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Test Message"
         '
-        'TextBox2
+        'Label2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(6, 44)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(355, 20)
-        Me.TextBox2.TabIndex = 2
-        Me.TextBox2.Text = "+20"
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 28)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(142, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Phone ex : +201012345678"
         '
         'Button6
         '
@@ -184,14 +185,14 @@ Partial Class API_W
         Me.Button6.Text = "Send Test"
         Me.Button6.UseVisualStyleBackColor = True
         '
-        'Label2
+        'TextBox2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 28)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(142, 13)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Phone ex : +201012345678"
+        Me.TextBox2.Location = New System.Drawing.Point(6, 44)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(355, 20)
+        Me.TextBox2.TabIndex = 2
+        Me.TextBox2.Text = "+20"
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label3
         '
@@ -213,6 +214,10 @@ Partial Class API_W
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 13
         Me.PictureBox1.TabStop = False
+        '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'API_W
         '
@@ -267,4 +272,5 @@ Partial Class API_W
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class
