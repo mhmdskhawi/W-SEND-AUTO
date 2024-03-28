@@ -89,6 +89,12 @@
     <Compile Include="API_W.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EX.Designer.vb">
+      <DependentUpon>EX.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EX.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Login.Designer.vb">
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
@@ -115,6 +121,9 @@
   <ItemGroup>
     <EmbeddedResource Include="API_W.resx">
       <DependentUpon>API_W.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EX.resx">
+      <DependentUpon>EX.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>

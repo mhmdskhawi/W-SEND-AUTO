@@ -72,16 +72,21 @@ Module API
 
         ' Return the response content
         Return responseContent
+
     End Function
 
     Function Getqr(authKey As String, uuid As String)
+
         Dim apiUrl As String = $"https://wplus.my-sys.online/api/qr/?device={uuid}&authkey={authKey}"
         ' HttpClient to make the HTTP request
+
         Dim httpClient As New HttpClient()
 
         Dim payload As String = "User-Agent=PostmanRuntime/7.36.1" &
                                 "&Connection=keep-alive"
+
         Dim req As String = String.Format(payload)
+
         Dim content As New StringContent(req, Encoding.UTF8, "application/x-www-form-urlencoded")
 
         Using client As New HttpClient()
@@ -167,14 +172,14 @@ Module API
             Dim response As HttpResponseMessage = client.PostAsync(url, content).Result
 
             If response.IsSuccessStatusCode Then
-                Dim responseContent As String = response.Content.ReadAsStringAsync().Result
-                MsgBox(responseContent)
+                '  Dim responseContent As String = response.Content.ReadAsStringAsync().Result
+                '  MsgBox(responseContent)
 
                 '   MsgBox(responseContent)
             Else
                 Return 0
 
-                MsgBox($"Error: {response.StatusCode} - {response.ReasonPhrase}")
+                'MsgBox($"Error: {response.StatusCode} - {response.ReasonPhrase}")
             End If
         End Using
 
@@ -208,13 +213,13 @@ Module API
                 Dim response As HttpResponseMessage = Await client.PostAsync(url, content)
 
                 If response.IsSuccessStatusCode Then
-                    Dim responseContent As String = Await response.Content.ReadAsStringAsync()
-                    MsgBox(responseContent)
+                    '    Dim responseContent As String = Await response.Content.ReadAsStringAsync()
+                    '  MsgBox(responseContent)
                 Else
-                    MsgBox($"Error: {response.StatusCode} - {response.ReasonPhrase}")
+                    '  MsgBox($"Error: {response.StatusCode} - {response.ReasonPhrase}")
                 End If
             Catch ex As Exception
-                MsgBox($"Exception: {ex.Message}")
+                '   MsgBox($"Exception: {ex.Message}")
             End Try
         End Using
     End Sub

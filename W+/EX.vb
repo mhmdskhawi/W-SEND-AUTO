@@ -1,0 +1,96 @@
+﻿Public Class EX
+    Dim price = 0
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If CheckBox1.Checked Then
+            price += 10
+        Else
+            price -= 10
+        End If
+        T.Text = price
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If CheckBox2.Checked Then
+            price += 50
+        Else
+            price -= 50
+        End If
+        T.Text = price
+    End Sub
+
+    Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
+        If CheckBox2.Checked Then
+            price += 26
+        Else
+            price -= 26
+        End If
+        T.Text = price
+    End Sub
+
+    Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
+        If CheckBox2.Checked Then
+            price += 33
+        Else
+            price -= 33
+        End If
+        T.Text = price
+    End Sub
+
+    Private Sub CheckBox5_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox5.CheckedChanged
+        If CheckBox2.Checked Then
+            price += 90
+        Else
+            price -= 90
+        End If
+        T.Text = price
+    End Sub
+
+    Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
+        If CheckBox2.Checked Then
+            price += 153
+        Else
+            price -= 153
+        End If
+        T.Text = price
+    End Sub
+
+    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
+        On Error Resume Next
+        TextBox6.Text = price - TextBox5.Text
+    End Sub
+
+    Private Sub TextBox6_TextChanged(sender As Object, e As EventArgs) Handles TextBox6.TextChanged
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        Dim fin = String.Format(RichTextBox1.Text, N.Text, D.Value.ToString, T.Text, TextBox5.Text, TextBox6.Text)
+        If pdf.Checked Then
+            ' Set the file dialog properties
+            OpenFileDialog1.InitialDirectory = "C:\" ' Set initial directory if needed
+            OpenFileDialog1.Filter = "PDF Files (*.pdf)|*.pdf|Document Files (*.docx, *.xlsx, *.csv)|*.docx;*.xlsx;*.csv" ' Filter to specific file types
+            OpenFileDialog1.FilterIndex = 1 ' Index of the filter to be selected by default
+
+            ' Show the file dialog and check if the user selected a file
+            If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
+                Dim selectedFilePath As String = OpenFileDialog1.FileName
+
+                send_apifile(PH.Text, fin, auth.Text, app.Text, selectedFilePath)
+
+
+            End If
+
+
+
+        Else
+            send_api(PH.Text, fin, auth.Text, app.Text)
+        End If
+
+
+    End Sub
+
+    Private Sub pdf_CheckedChanged(sender As Object, e As EventArgs) Handles pdf.CheckedChanged
+
+    End Sub
+End Class
