@@ -367,5 +367,5 @@ Partial Class EX
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label8 As Label
-    Friend WithEvents Timer1 As Timer
+    Private WithEvents Timer1 As Timer
 End Class

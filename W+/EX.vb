@@ -141,7 +141,12 @@ Public Class EX
         End If
 
     End Sub
-End Class
-Public Class DeviceInfo
 
+
+
+    Private Sub PictureBox1_DoubleClick(sender As Object, e As EventArgs) Handles PictureBox1.DoubleClick
+
+        Timer1.Start()
+    End Sub
 End Class
+
