@@ -9,7 +9,7 @@ Public Class Login
         Else
             Dim jsonResponse As JObject = JObject.Parse(xdata)
             If jsonResponse("status").ToString() = "1" Then
-                API_W.Show()
+                EX.Show()
                 Me.Hide()
             Else
                 MsgBox("NOT ALLOWED")

@@ -6,7 +6,8 @@ Imports Newtonsoft.Json.Linq
 Module API
 
     Function creatdevice(authKey As String, device_name As String)
-        Dim apiUrl As String = $"https://wplus.my-sys.online/api/devicecreat/?name={device_name}&authkey={authKey}"
+        Dim apiUrl As String = $"https://wplus.my-sys.online/api/Create-Device/?name={device_name}&authkey={authKey}"
+
         ' HttpClient to make the HTTP request
         Dim httpClient As New HttpClient()
 
@@ -59,7 +60,7 @@ Module API
     End Function
     Function get_devices(authKey As String) As String
 
-        Dim apiUrl As String = "https://wplus.my-sys.online/api/gdid/?authkey=" & authKey
+        Dim apiUrl As String = "https://wplus.my-sys.online/api/get_all?authkey=" & authKey
 
 
         Dim httpClient As New HttpClient()
@@ -156,7 +157,39 @@ Module API
         Return responseContent
 
     End Function
+    Function Getqrimage(uuid As String)
+        ' API endpoint URL
+        Dim apiUrl As String = "https://wplus.my-sys.online/api/qrimage"
 
+        ' Construct the payload
+        Dim payload As String = $"device={uuid}"
+
+        ' Convert the payload to the appropriate format
+        Dim content As New StringContent(payload, Encoding.UTF8, "application/x-www-form-urlencoded")
+
+        ' Create a new instance of HttpClient
+        Using client As New HttpClient()
+            ' Send the POST request asynchronously
+            Dim response As HttpResponseMessage = client.PostAsync(apiUrl, content).Result
+
+            ' Check if the request was successful
+            If response.IsSuccessStatusCode Then
+                ' Get the image data as a byte array
+                Dim imageBytes As Byte() = response.Content.ReadAsByteArrayAsync().Result
+
+                ' Convert the byte array to an Image
+                Dim imageStream As New MemoryStream(imageBytes)
+                Dim image As Image = Image.FromStream(imageStream)
+
+                ' Assign the image to the PictureBox
+                Return image
+
+
+            Else
+
+            End If
+        End Using
+    End Function
     Function send_api(ByVal num, ByVal mes, ByVal auth, ByVal app)
 
         Dim url As String = "https://wplus.my-sys.online/api/create-message"

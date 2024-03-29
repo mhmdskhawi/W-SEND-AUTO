@@ -22,6 +22,7 @@ Partial Class EX
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.N = New System.Windows.Forms.TextBox()
         Me.T = New System.Windows.Forms.TextBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
@@ -46,11 +47,16 @@ Partial Class EX
         Me.app = New System.Windows.Forms.TextBox()
         Me.pdf = New System.Windows.Forms.CheckBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'N
         '
-        Me.N.Location = New System.Drawing.Point(12, 34)
+        Me.N.Location = New System.Drawing.Point(12, 41)
         Me.N.Name = "N"
         Me.N.Size = New System.Drawing.Size(273, 20)
         Me.N.TabIndex = 0
@@ -58,7 +64,7 @@ Partial Class EX
         '
         'T
         '
-        Me.T.Location = New System.Drawing.Point(12, 199)
+        Me.T.Location = New System.Drawing.Point(12, 225)
         Me.T.Name = "T"
         Me.T.Size = New System.Drawing.Size(273, 20)
         Me.T.TabIndex = 3
@@ -66,7 +72,7 @@ Partial Class EX
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(157, 225)
+        Me.TextBox5.Location = New System.Drawing.Point(157, 251)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.Size = New System.Drawing.Size(128, 20)
         Me.TextBox5.TabIndex = 4
@@ -74,7 +80,7 @@ Partial Class EX
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(157, 251)
+        Me.TextBox6.Location = New System.Drawing.Point(157, 277)
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.Size = New System.Drawing.Size(128, 20)
         Me.TextBox6.TabIndex = 5
@@ -83,7 +89,7 @@ Partial Class EX
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 18)
+        Me.Label1.Location = New System.Drawing.Point(12, 25)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(41, 13)
         Me.Label1.TabIndex = 6
@@ -92,7 +98,7 @@ Partial Class EX
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 101)
+        Me.Label2.Location = New System.Drawing.Point(12, 127)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 13)
         Me.Label2.TabIndex = 7
@@ -100,7 +106,7 @@ Partial Class EX
         '
         'D
         '
-        Me.D.Location = New System.Drawing.Point(12, 117)
+        Me.D.Location = New System.Drawing.Point(12, 143)
         Me.D.Name = "D"
         Me.D.Size = New System.Drawing.Size(273, 20)
         Me.D.TabIndex = 8
@@ -108,7 +114,7 @@ Partial Class EX
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(97, 137)
+        Me.Label3.Location = New System.Drawing.Point(97, 163)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(56, 13)
         Me.Label3.TabIndex = 9
@@ -117,7 +123,7 @@ Partial Class EX
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(15, 153)
+        Me.CheckBox1.Location = New System.Drawing.Point(15, 179)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(57, 17)
         Me.CheckBox1.TabIndex = 10
@@ -127,7 +133,7 @@ Partial Class EX
         'CheckBox2
         '
         Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(100, 153)
+        Me.CheckBox2.Location = New System.Drawing.Point(100, 179)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(43, 17)
         Me.CheckBox2.TabIndex = 11
@@ -137,7 +143,7 @@ Partial Class EX
         'CheckBox3
         '
         Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(185, 153)
+        Me.CheckBox3.Location = New System.Drawing.Point(185, 179)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(46, 17)
         Me.CheckBox3.TabIndex = 12
@@ -147,7 +153,7 @@ Partial Class EX
         'CheckBox4
         '
         Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(15, 176)
+        Me.CheckBox4.Location = New System.Drawing.Point(15, 202)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(45, 17)
         Me.CheckBox4.TabIndex = 13
@@ -157,7 +163,7 @@ Partial Class EX
         'CheckBox5
         '
         Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(100, 176)
+        Me.CheckBox5.Location = New System.Drawing.Point(100, 202)
         Me.CheckBox5.Name = "CheckBox5"
         Me.CheckBox5.Size = New System.Drawing.Size(54, 17)
         Me.CheckBox5.TabIndex = 14
@@ -167,7 +173,7 @@ Partial Class EX
         'CheckBox6
         '
         Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(185, 176)
+        Me.CheckBox6.Location = New System.Drawing.Point(185, 202)
         Me.CheckBox6.Name = "CheckBox6"
         Me.CheckBox6.Size = New System.Drawing.Size(54, 17)
         Me.CheckBox6.TabIndex = 15
@@ -176,7 +182,7 @@ Partial Class EX
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 298)
+        Me.Button1.Location = New System.Drawing.Point(15, 332)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(273, 23)
         Me.Button1.TabIndex = 16
@@ -185,7 +191,7 @@ Partial Class EX
         '
         'PH
         '
-        Me.PH.Location = New System.Drawing.Point(12, 75)
+        Me.PH.Location = New System.Drawing.Point(12, 82)
         Me.PH.Name = "PH"
         Me.PH.Size = New System.Drawing.Size(273, 20)
         Me.PH.TabIndex = 17
@@ -194,7 +200,7 @@ Partial Class EX
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 59)
+        Me.Label4.Location = New System.Drawing.Point(12, 66)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(44, 13)
         Me.Label4.TabIndex = 18
@@ -203,7 +209,7 @@ Partial Class EX
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(118, 228)
+        Me.Label5.Location = New System.Drawing.Point(118, 254)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(36, 13)
         Me.Label5.TabIndex = 19
@@ -212,7 +218,7 @@ Partial Class EX
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(115, 254)
+        Me.Label6.Location = New System.Drawing.Point(115, 280)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(29, 13)
         Me.Label6.TabIndex = 20
@@ -222,9 +228,9 @@ Partial Class EX
         '
         Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox1.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RichTextBox1.Location = New System.Drawing.Point(305, 78)
+        Me.RichTextBox1.Location = New System.Drawing.Point(305, 173)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(400, 265)
+        Me.RichTextBox1.Size = New System.Drawing.Size(400, 242)
         Me.RichTextBox1.TabIndex = 21
         Me.RichTextBox1.Text = "✅ اهلا بك /  {0} ✅" & Global.Microsoft.VisualBasic.ChrW(10) & "تم تسجيل زيارتك الان بتاريخ " & Global.Microsoft.VisualBasic.ChrW(10) & "{1}" & Global.Microsoft.VisualBasic.ChrW(10) & "وتم شراء منتاجتنا بقيمه " & Global.Microsoft.VisualBasic.ChrW(10) & "Tota" &
     "l : {2} جنيه " & Global.Microsoft.VisualBasic.ChrW(10) & "Payed : {3} جنيه " & Global.Microsoft.VisualBasic.ChrW(10) & "وعليك قيمه باقى ب" & Global.Microsoft.VisualBasic.ChrW(10) & "{4}  جنيه " & Global.Microsoft.VisualBasic.ChrW(10) & "فقط لا غير 🌹" & Global.Microsoft.VisualBasic.ChrW(10) & "شكرا " &
@@ -232,24 +238,24 @@ Partial Class EX
         '
         'auth
         '
-        Me.auth.Location = New System.Drawing.Point(432, 18)
+        Me.auth.Location = New System.Drawing.Point(310, 93)
         Me.auth.Name = "auth"
-        Me.auth.Size = New System.Drawing.Size(273, 20)
+        Me.auth.Size = New System.Drawing.Size(202, 20)
         Me.auth.TabIndex = 22
         Me.auth.Text = "xeEdE4mxXzsdoc6aCxRV2bMiNlWajyvyxliFzVcBSO9hzZKPS1"
         '
         'app
         '
-        Me.app.Location = New System.Drawing.Point(432, 44)
+        Me.app.Location = New System.Drawing.Point(310, 135)
         Me.app.Name = "app"
-        Me.app.Size = New System.Drawing.Size(273, 20)
+        Me.app.Size = New System.Drawing.Size(202, 20)
         Me.app.TabIndex = 23
         Me.app.Text = "5fa13104-c0f2-4d17-9695-a84c5cf3df63"
         '
         'pdf
         '
         Me.pdf.AutoSize = True
-        Me.pdf.Location = New System.Drawing.Point(240, 283)
+        Me.pdf.Location = New System.Drawing.Point(240, 309)
         Me.pdf.Name = "pdf"
         Me.pdf.Size = New System.Drawing.Size(45, 17)
         Me.pdf.TabIndex = 24
@@ -260,11 +266,46 @@ Partial Class EX
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = Global.W_.My.Resources.Resources.whatsapp_logo_background_29
+        Me.PictureBox1.Location = New System.Drawing.Point(518, 18)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(187, 138)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 25
+        Me.PictureBox1.TabStop = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(307, 77)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(58, 13)
+        Me.Label7.TabIndex = 26
+        Me.Label7.Text = "Auth Key :"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(307, 119)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(54, 13)
+        Me.Label8.TabIndex = 27
+        Me.Label8.Text = "App Key :"
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 500
+        '
         'EX
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(717, 355)
+        Me.ClientSize = New System.Drawing.Size(717, 428)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.pdf)
         Me.Controls.Add(Me.app)
@@ -290,6 +331,7 @@ Partial Class EX
         Me.Controls.Add(Me.N)
         Me.Name = "EX"
         Me.Text = "EX"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -319,4 +361,8 @@ Partial Class EX
     Friend WithEvents app As TextBox
     Friend WithEvents pdf As CheckBox
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Timer1 As Timer
 End Class

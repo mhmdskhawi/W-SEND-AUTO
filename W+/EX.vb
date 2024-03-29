@@ -1,5 +1,9 @@
-﻿Public Class EX
+﻿Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
+
+Public Class EX
     Dim price = 0
+    Dim deviceId As String
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
         If CheckBox1.Checked Then
             price += 10
@@ -19,7 +23,7 @@
     End Sub
 
     Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
-        If CheckBox2.Checked Then
+        If CheckBox3.Checked Then
             price += 26
         Else
             price -= 26
@@ -28,7 +32,7 @@
     End Sub
 
     Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
-        If CheckBox2.Checked Then
+        If CheckBox4.Checked Then
             price += 33
         Else
             price -= 33
@@ -37,7 +41,7 @@
     End Sub
 
     Private Sub CheckBox5_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox5.CheckedChanged
-        If CheckBox2.Checked Then
+        If CheckBox5.Checked Then
             price += 90
         Else
             price -= 90
@@ -46,7 +50,7 @@
     End Sub
 
     Private Sub CheckBox6_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox6.CheckedChanged
-        If CheckBox2.Checked Then
+        If CheckBox6.Checked Then
             price += 153
         Else
             price -= 153
@@ -93,4 +97,51 @@
     Private Sub pdf_CheckedChanged(sender As Object, e As EventArgs) Handles pdf.CheckedChanged
 
     End Sub
+
+    Private Sub EX_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        auth.Text = Login.TextBox1.Text
+        Dim rep = get_devices(auth.Text)
+        If rep.Length < 5 Then
+
+            creatdevice(auth.Text, "vb.net")
+        Else
+
+
+        End If
+
+
+
+        Dim array As JArray = JArray.Parse(API.get_devices(auth.Text))
+
+        For Each item As JObject In array
+            deviceId = DirectCast(item("Device id"), JValue).Value.ToString()
+            app.Text = DirectCast(item("App key"), JValue).Value.ToString()
+
+            Dim x As Image = Getqrimage(deviceId)
+            If x IsNot Nothing Then
+                PictureBox1.Image = x
+            Else
+                PictureBox1.Image = My.Resources.whatsapp_logo_background_29
+                Timer1.Stop()
+            End If
+
+        Next
+
+
+        Timer1.Start()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Dim x As Image = Getqrimage(deviceId)
+        If x IsNot Nothing Then
+            PictureBox1.Image = x
+        Else
+            PictureBox1.Image = My.Resources.whatsapp_logo_background_29
+            Timer1.Stop()
+        End If
+
+    End Sub
+End Class
+Public Class DeviceInfo
+
 End Class
