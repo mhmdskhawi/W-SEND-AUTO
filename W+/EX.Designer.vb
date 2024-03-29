@@ -23,6 +23,7 @@ Partial Class EX
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(EX))
         Me.N = New System.Windows.Forms.TextBox()
         Me.T = New System.Windows.Forms.TextBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
@@ -329,8 +330,10 @@ Partial Class EX
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.T)
         Me.Controls.Add(Me.N)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "EX"
-        Me.Text = "EX"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "TEST API"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
