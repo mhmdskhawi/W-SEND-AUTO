@@ -243,7 +243,6 @@ Partial Class EX
         Me.auth.Name = "auth"
         Me.auth.Size = New System.Drawing.Size(202, 20)
         Me.auth.TabIndex = 22
-        Me.auth.Text = "xeEdE4mxXzsdoc6aCxRV2bMiNlWajyvyxliFzVcBSO9hzZKPS1"
         '
         'app
         '
@@ -251,7 +250,6 @@ Partial Class EX
         Me.app.Name = "app"
         Me.app.Size = New System.Drawing.Size(202, 20)
         Me.app.TabIndex = 23
-        Me.app.Text = "5fa13104-c0f2-4d17-9695-a84c5cf3df63"
         '
         'pdf
         '
